@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import { Container } from './component/Container';
+import { Index } from './pages/Index';
+import { Block } from './pages/Block';
+import { Header } from './component/Header';
+import { Transaction } from './pages/Transaction';
+import { Ts } from './pages/Ts';
+import { Bl } from './pages/Bl';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header />
+        <Container>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/block" element={<Block />} />
+            <Route path="/transaction" element={<Transaction />} />
+            <Route path="/bl/:hash" element={<Bl />} />
+            <Route path="/ts/:hash" element={<Ts />} />
+          </Routes>
+        </Container>
+      </Router>
+    </>
   );
 }
 
